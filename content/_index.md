@@ -53,13 +53,10 @@ projects = [
     "Extensible workflow engine built on top of Oban pipelines with granular state management.",
     "Cryptographic document signing and PDF processing utilizing high-performance Elixir NIFs and Rust."
   ], github = "https://github.com/wraft/wraft" },
-  { title = "Ledger Flow Backend", category = "Multi-tenant Accounting Platform", desc = "A multi-tenant accounting platform API that bridges internal teams with external clients by proxying directly into each firm's ERPNext instance. Handles auth, task-based workflow management, financial data proxying, and push notifications through an event-driven architecture on Express 5, PostgreSQL 17, and Redis 7.", bullets = [
-    "Tenant boundary modeled at the client level via a user_client_access join table, letting a single user operate across multiple client/company ERPNext instances behind one unified API.",
-    "Layered architecture with seven vertical domain modules (auth, tasks, accounts, admin, dashboard, notifications, system) following a Controller → Service → Repository → Prisma flow.",
-    "Custom Axios-based ERPNext/Frappe client manages cookie-session auth, getDoc/getList/rpc calls, and proactive session refresh driven by Redis keyspace notifications before TTL expiry.",
-    "In-process event bus coordinates cross-cutting concerns—ERP sync from task events, audit logging, and FCM push delivery via Firebase Admin—without coupling domain modules.",
-    "Defense-in-depth security: Helmet CSP/HSTS, Origin-header CSRF guard for cookie-mutating routes, Redis-backed sliding-window rate limits, jose-signed JWT access + refresh tokens, and a two-layer error classifier/formatter that redacts internals in production.",
-    "Strict ESM TypeScript with Zod-validated env and request schemas, Pino structured logs with PII redaction, Prometheus metrics, and a readiness probe gated on Redis + Postgres + ERP session subscriber boot."
+  { title = "Accounting Collaboration Platform", category = "Multi-tenant ERPNext Integration", desc = "A platform that lets accounting firms collaborate with their clients on top of ERPNext—unifying task management, document exchange, and real-time notifications across multiple client instances behind a single interface.", bullets = [
+    "Multi-tenant model where a single user can work across many client/company ERPNext instances through scoped access grants.",
+    "Proxies live accounting data (invoices, journal entries, ledgers) from each client's ERPNext while owning task and comment workflows internally.",
+    "Task-based workflow with comments, status transitions, audit trails, and cross-platform push notifications."
   ] }
 ]
 

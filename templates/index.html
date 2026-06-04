@@ -34,7 +34,6 @@
         <a href="#overview">Overview</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
-        <a href="#side-projects">Apps</a>
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
       </nav>
@@ -166,38 +165,6 @@
       </div>
       <div class="project-grid">
         {% for proj in section.extra.projects %}
-          <article class="card project-card">
-            <div class="project-top">
-              <h3>{{ proj.title }}</h3>
-              <div class="meta">{{ proj.category }}</div>
-            </div>
-            <p>{{ proj.desc }}</p>
-            <ul class="project-list">
-              {% for bullet in proj.bullets %}
-                <li>{{ bullet }}</li>
-              {% endfor %}
-            </ul>
-            {% if proj.github %}
-              <div class="link-row">
-                <a class="inline-link" href="{{ proj.github }}" target="_blank" rel="noopener noreferrer">GitHub Repo</a>
-              </div>
-            {% endif %}
-          </article>
-        {% endfor %}
-      </div>
-    </section>
-
-    <!-- Side Projects Section -->
-    <section id="side-projects" class="reveal">
-      <div class="section-head">
-        <div class="micro-label">Side Projects</div>
-        <h2>Local-first mobile apps.</h2>
-        <p>
-          Offline-first Android apps exploring unusual stacks—Rust UIs on the JVM, on-device ML translation—built for personal use.
-        </p>
-      </div>
-      <div class="project-grid">
-        {% for proj in section.extra.side_projects %}
           <article class="card project-card">
             <div class="project-top">
               <h3>{{ proj.title }}</h3>

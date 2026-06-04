@@ -57,10 +57,7 @@ projects = [
     "Multi-tenant model where a single user can work across many client/company ERPNext instances through scoped access grants.",
     "Proxies live accounting data (invoices, journal entries, ledgers) from each client's ERPNext while owning task and comment workflows internally.",
     "Task-based workflow with comments, status transitions, audit trails, and cross-platform push notifications."
-  ] }
-]
-
-side_projects = [
+  ] },
   { title = "LocalTube Audio", category = "Android · Rust + Dioxus", desc = "A local-first Android app that turns any YouTube URL into a 320 kbps MP3 with embedded album art. No backend, no ads, no tracking—everything runs on device.", stack = ["Rust", "Dioxus", "JNI", "NewPipe Extractor", "FFmpegKit", "Kotlin", "Gradle 9", "Material You"], bullets = [
     "Rust UI compiled with Dioxus and cross-compiled to aarch64-linux-android, packaged into a single APK.",
     "Calls into NewPipe Extractor (Java) and FFmpegKit (native) over JNI via the `jni` crate, with Kotlin injection bridging the Android lifecycle.",

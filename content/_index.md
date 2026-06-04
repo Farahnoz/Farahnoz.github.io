@@ -60,6 +60,20 @@ projects = [
   ] }
 ]
 
+side_projects = [
+  { title = "LocalTube Audio", category = "Android · Rust + Dioxus", desc = "A local-first Android app that turns any YouTube URL into a 320 kbps MP3 with embedded album art. No backend, no ads, no tracking—everything runs on device.", stack = ["Rust", "Dioxus", "JNI", "NewPipe Extractor", "FFmpegKit", "Kotlin", "Gradle 9", "Material You"], bullets = [
+    "Rust UI compiled with Dioxus and cross-compiled to aarch64-linux-android, packaged into a single APK.",
+    "Calls into NewPipe Extractor (Java) and FFmpegKit (native) over JNI via the `jni` crate, with Kotlin injection bridging the Android lifecycle.",
+    "Persistent download queue with animated progress and a dark Material You UI."
+  ] },
+  { title = "EPUB Reader", category = "Android · Flutter", desc = "A production-grade EPUB 2/3 reader with a full library, dual reading modes, and fully offline translation across 57 languages including Persian, Urdu, Arabic, and Hindi.", stack = ["Flutter", "Dart", "Google ML Kit", "CSS Columns", "SQLite"], bullets = [
+    "Library with auto-scan, grid/list views, cover thumbnails, sorting, and per-chapter persistent reading position.",
+    "Reader supports continuous-scroll and CSS-column paged modes, 13 themes (Solarized, Gruvbox, Dracula, Tokyo Night…), and full font/size/family controls.",
+    "On-device ML Kit translation with RTL rendering, per-chapter translation cache, and an original ↔ translated toggle.",
+    "Selection action bar with Copy and a conditional “Ask ChatGPT” action that appears only when the ChatGPT app is installed."
+  ] }
+]
+
 recognition = [
   { title = "Wraft Featured at IndiaFOSS 2025", desc = "Showcased as an emerging open-source document automation platform at India’s premier FOSS conference, demonstrating community adoption." },
   { title = "B.Tech in Electronics & Communication", desc = "Indian Institute of Information Technology, Sri City (2014 – 2018)." }

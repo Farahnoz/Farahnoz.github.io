@@ -48,7 +48,7 @@ experiences = [
 ]
 
 projects = [
-  { title = "Wraft DLM Platform", category = "Document Lifecycle Management", desc = "An open-source document lifecycle automation system that treats documents like code—structured, version-controlled, and highly collaborative. Showcased at IndiaFOSS 2025.", bullets = [
+  { title = "Wraft DLM Platform", category = "Document Lifecycle Management", desc = "An open-source document lifecycle automation system that treats documents like code—structured, version-controlled, and highly collaborative. Showcased at IndiaFOSS 2025.", stack = ["Elixir", "Phoenix", "Rust", "PostgreSQL", "Typesense", "Oban", "Pandoc", "Typst", "MinIO"], bullets = [
     "Real-time collaborative editing using Phoenix Channels/WebSockets for conflict-free multi-user authoring.",
     "Extensible workflow engine built on top of Oban pipelines with granular state management.",
     "Cryptographic document signing and PDF processing utilizing high-performance Elixir NIFs and Rust."

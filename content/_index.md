@@ -26,7 +26,7 @@ about_background_title = "Scalable architecture from day one."
 about_background_p1 = "Vasil's experience extends from co-founding content-sharing platforms to architecting multi-tenant document workflows. He builds systems that carry enterprise data, handle concurrent inputs under high load, and remain reliable in mission-critical pipelines."
 about_background_p2 = "At Wraft, he led the backend effort from early-stage MVP to a production-ready system capable of hosting 270+ active communities. This operational rigor extends into his freelance consulting work, delivering high-performance accounting and automation modules."
 
-quote = "Current focus: a book-parsing and translation engine for Urdu, Persian, Sanskrit, and Arabic primary sources."
+quote = "Current focus: a book-parsing and translation engine for Urdu, Persian, Sanskrit, and Arabic primary sources — the histories and theology most of us can't read in the original. LLMs are finally good enough to bring these texts to readers who never could."
 
 experiences = [
   { date = "Dec 2024 – Present", company = "Independent Consultant", role = "Freelance Backend Engineer", desc = "Delivering backend engineering solutions for ERP-focused systems and business automation platforms, optimizing workflows for performance and data consistency.", bullets = [

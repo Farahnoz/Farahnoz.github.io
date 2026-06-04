@@ -69,7 +69,7 @@ projects = [
     "On-device ML Kit translation with RTL rendering, per-chapter translation cache, and an original ↔ translated toggle.",
     "Selection action bar with Copy and a conditional “Ask ChatGPT” action that appears only when the ChatGPT app is installed."
   ] },
-  { title = "Book Parsing & Translation Engine", category = "In Progress · Reading Experience", desc = "A pipeline that ingests a book in any format, parses its structure, and renders it as a tailored reading experience — clean typography, structure-aware navigation, and LLM translation into the reader's language. UI direction inspired by a Google Stitch prototype; the EPUB Reader above is the first shipped slice.", stack = ["LLM Translation", "EPUB", "Flutter", "On-device ML"], bullets = [
+  { title = "Book Parsing & Translation Engine", category = "In Progress · Reading Experience", desc = "A pipeline that ingests a book in any format, parses its structure, and renders it as a tailored reading experience — clean typography, structure-aware navigation, and LLM translation into the reader's language. UI direction inspired by a Google Stitch prototype; the EPUB Reader above is the first shipped slice.", stack = ["Elixir", "Rust", "React", "Next.js", "TypeScript"], bullets = [
     "Structure-aware parsing of chapters, footnotes, and headings into a clean reading model independent of the source format.",
     "Reader-first presentation: typography, spacing, themes, and navigation tuned for long-form reading rather than raw file rendering.",
     "Per-book translation pipeline mixing on-device models and LLMs, with original ↔ translated toggling at any granularity."

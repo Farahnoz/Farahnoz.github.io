@@ -482,7 +482,6 @@ Typst doesn't natively output AcroForm fields. The convention of using specific 
 | Pipeline stage model | [`lib/wraft_doc/pipelines/stages/stage.ex`](https://github.com/wraft/wraft/blob/main/lib/wraft_doc/pipelines/stages/stage.ex) |
 | Oban workers | [`lib/wraft_doc/workers/`](https://github.com/wraft/wraft/tree/main/lib/wraft_doc/workers/) |
 | PDF metadata extraction | [`lib/wraft_doc/pdf_metadata.ex`](https://github.com/wraft/wraft/blob/main/lib/wraft_doc/pdf_metadata.ex) |
-| Document conversion | [`lib/wraft_doc/doc_conversion.ex`](https://github.com/wraft/wraft/blob/main/lib/wraft_doc/doc_conversion.ex) |
 
 ---
 

@@ -70,16 +70,7 @@ The flow is:
 <details>
 <summary>Layer 1: Document Instance & State Machine</summary>
 
-The core entity is `WraftDoc.Documents.Instance` ([`lib/wraft_doc/documents/instance.ex`](https://github.com/wraft/wraft/blob/main/lib/wraft_doc/documents/instance.ex)). Every document version is an Instance with:
-
-- `instance_id` — unique document number within the organization
-- `raw` / `serialized` — the content and field values
-- `signature_status` — boolean flag: `false` until all counterparties have signed, `true` when the document is fully signed
-- `approval_status` — boolean for the approval workflow
-- `type` — integer enum: `normal`, `bulk_build`, `pipeline_api`, `pipeline_hook`
-- `state_id` — links to the workflow state machine (Flow.State) for approval pipelines
-
-The Instance tracks which workflow state a document is in, who's allowed to edit it, and whether signing is complete. The `update_signature_status_changeset/2` function flips `signature_status` to `true` once the last counterparty signs.
+The core entity is `WraftDoc.Documents.Instance` ([`lib/wraft_doc/documents/instance.ex`](https://github.com/wraft/wraft/blob/main/lib/wraft_doc/documents/instance.ex)) — every document version is one, holding the rendered content, signature and approval flags, document type, and a pointer to the current `Flow.State` in the workflow state machine.
 
 </details>
 

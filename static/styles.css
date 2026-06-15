@@ -443,7 +443,7 @@ h2 {
 
 .bullet-list li, .project-list li, .coverage-list li, .pub-list li, .stack-list li {
   margin-top: 10px;
-  color: #372f2a;
+  color: var(--text);
 }
 
 .bullet-list li:first-child, .project-list li:first-child, .coverage-list li:first-child, .pub-list li:first-child, .stack-list li:first-child {
@@ -1008,6 +1008,9 @@ html.dark .hero-panel {
 
 html.dark .hero-copy p,
 html.dark .bullet-list li,
+html.dark .project-list li,
+html.dark .coverage-list li,
+html.dark .pub-list li,
 html.dark .post-card p {
   color: #d3c7b6;
 }

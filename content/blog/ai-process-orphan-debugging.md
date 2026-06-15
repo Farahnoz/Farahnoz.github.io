@@ -2,7 +2,7 @@
 title = "How 10 Orphaned AI Processes Ate My Server's RAM (And How I Fixed It)"
 description = "A debugging story about orphaned processes, memory pressure, and the simple fixes that prevent long-running AI agents from silently consuming your server's RAM."
 date = 2026-06-15
-updated = 2026-06-15
+updated = 2026-06-16
 
 [extra]
 canonical = ""
@@ -65,7 +65,7 @@ Jun 12 — PIDs 1005413, 1077883, 1105825, 1176718, 1203963
 Jun 14 — PIDs 2467254, 2538195
 ```
 
-Each day I had connected to the container, ran `opencode` to use the AI assistant, then disconnected. When a shell exits, its child processes become **orphaned** — they get re-parented to PID 1 and keep running. Since `opencode` is a long-lived process (it keeps a language model loaded), it never terminates on its own.
+Each day I had connected to the container, ran `opencode` to use the AI assistant, then disconnected. When a shell exits, its child processes become **orphaned** — they get re-parented to PID 1 and keep running. Since `opencode` is a long-lived process (it keeps an AI agent session alive that streams from a model API), it never terminates on its own.
 
 Over a week, these orphans accumulated. Each one silently reserving ~500 MB.
 
@@ -130,9 +130,9 @@ The original file just cleared the screen. The two `pkill` lines I added say: "b
 
 ## The Lesson
 
-Any long-running process you launch from a shell session can become an orphan if you exit without terminating it. This is especially dangerous with AI agents and language model servers, which:
+Any long-running process you launch from a shell session can become an orphan if you exit without terminating it. This is especially dangerous with AI agent CLIs backed by remote model APIs, which:
 
-1. Load large models into memory (500 MB+ each)
+1. Hold long-lived sessions and runtime state in memory (500 MB+ each process)
 2. Run indefinitely by design
 3. Don't respond to terminal hangup signals (SIGHUP)
 

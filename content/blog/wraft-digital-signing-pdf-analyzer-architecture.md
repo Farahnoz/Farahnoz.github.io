@@ -2,7 +2,7 @@
 title = "Inside Wraft: How We Built Digital Signing, PDF Analysis, and the Elixir-Rust-Java Bridge"
 description = "A deep architectural walkthrough of Wraft's digital signing pipeline — from Rust NIFs that parse PDF geometry, through Java signing JARs, to Elixir/Oban workflow orchestration — and how every piece connects."
 date = 2026-06-15
-updated = 2026-06-16
+updated = 2026-06-17
 tags = ["elixir", "rust", "pdf", "digital-signing", "nif", "architecture"]
 
 [extra]
@@ -342,13 +342,11 @@ A `Stage` links a `ContentType`, `DataTemplate`, `Pipeline`, and `State` togethe
 
 ### Approval System
 
-[`lib/wraft_doc/documents/instance_approval_sytem.ex`](https://github.com/wraft/wraft/blob/main/lib/wraft_doc/documents/instance_approval_sytem.ex)
+> **Correction:** the legacy `WraftDoc.Documents.InstanceApprovalSystem` schema is deprecated. Approvals are now modeled as state-machine transitions.
 
-The `InstanceApprovalSystem` tracks per-instance, per-approver approval state:
+[`lib/wraft_doc/documents/approval.ex`](https://github.com/wraft/wraft/blob/main/lib/wraft_doc/documents/approval.ex)
 
-- `flag` — approved or not
-- `approved_at` / `rejected_at` — timestamps
-- Links to an `ApprovalSystem` which defines who the approver is
+A document `Instance` lives at a `Flow.State` inside a `Flow` defined in [`lib/wraft_doc/organisation/flow.ex`](https://github.com/wraft/wraft/blob/main/lib/wraft_doc/organisation/flow.ex). Each approval action is recorded as a row in `WraftDoc.Documents.InstanceTransitionLog` ([`lib/wraft_doc/documents/instance_transition_log.ex`](https://github.com/wraft/wraft/blob/main/lib/wraft_doc/documents/instance_transition_log.ex)) with `from_state_id`, `to_state_id`, `reviewer_id`, `review_status` (`:approved` or `:rejected`), and `reviewed_at`. `WraftDoc.Documents.Approval.get_document_approval_history/1` reads those transition rows in reverse chronological order, preloading the destination `Flow.State` and the reviewer's profile.
 
 The approval workflow uses Oban workers (`EmailWorker`, `ReminderWorker`) to send approval requests and reminders. A document must clear all approvals before it enters the signing phase.
 
@@ -481,7 +479,8 @@ Typst doesn't natively output AcroForm fields. The convention of using specific 
 | E-Signature schema | [`lib/wraft_doc/documents/e_signature.ex`](https://github.com/wraft/wraft/blob/main/lib/wraft_doc/documents/e_signature.ex) |
 | CounterParty (signer) schema | [`lib/wraft_doc/counter_parties/counter_party.ex`](https://github.com/wraft/wraft/blob/main/lib/wraft_doc/counter_parties/counter_party.ex) |
 | Document instance schema | [`lib/wraft_doc/documents/instance.ex`](https://github.com/wraft/wraft/blob/main/lib/wraft_doc/documents/instance.ex) |
-| Approval system | [`lib/wraft_doc/documents/instance_approval_sytem.ex`](https://github.com/wraft/wraft/blob/main/lib/wraft_doc/documents/instance_approval_sytem.ex) |
+| Approval context | [`lib/wraft_doc/documents/approval.ex`](https://github.com/wraft/wraft/blob/main/lib/wraft_doc/documents/approval.ex) |
+| Approval transition log (deprecated: `instance_approval_sytem.ex`) | [`lib/wraft_doc/documents/instance_transition_log.ex`](https://github.com/wraft/wraft/blob/main/lib/wraft_doc/documents/instance_transition_log.ex) |
 | Pipeline stage model | [`lib/wraft_doc/pipelines/stages/stage.ex`](https://github.com/wraft/wraft/blob/main/lib/wraft_doc/pipelines/stages/stage.ex) |
 | Oban workers | [`lib/wraft_doc/workers/`](https://github.com/wraft/wraft/tree/main/lib/wraft_doc/workers/) |
 | PDF metadata extraction | [`lib/wraft_doc/pdf_metadata.ex`](https://github.com/wraft/wraft/blob/main/lib/wraft_doc/pdf_metadata.ex) |

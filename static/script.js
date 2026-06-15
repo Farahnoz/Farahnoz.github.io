@@ -1,4 +1,65 @@
 document.addEventListener("DOMContentLoaded", () => {
+  // Dark mode toggle
+  var savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "dark" || (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches)) {
+    document.documentElement.classList.remove("light");
+    document.documentElement.classList.add("dark");
+  }
+
+  var lightMermaidVars = {
+    primaryColor: "#f4ede3",
+    primaryTextColor: "#1f1a17",
+    primaryBorderColor: "#6b5b4f",
+    lineColor: "#6b5b4f",
+    secondaryColor: "#e8dcc8",
+    tertiaryColor: "#efe4d4",
+    mainBkg: "#f4ede3",
+    nodeBorder: "#6b5b4f",
+    clusterBkg: "rgba(255,251,244,0.72)",
+    clusterBorder: "rgba(69,52,39,0.18)",
+    titleColor: "#1f1a17",
+    edgeLabelBackground: "#f4ede3",
+    nodeTextColor: "#1f1a17",
+    fontSize: "14px"
+  };
+
+  var darkMermaidVars = {
+    primaryColor: "#28221e",
+    primaryTextColor: "#f0e8dc",
+    primaryBorderColor: "#a08c78",
+    lineColor: "#a08c78",
+    secondaryColor: "#1e1a16",
+    tertiaryColor: "#1a1714",
+    mainBkg: "#28221e",
+    nodeBorder: "#a08c78",
+    clusterBkg: "rgba(40,34,30,0.72)",
+    clusterBorder: "rgba(160,140,120,0.18)",
+    titleColor: "#f0e8dc",
+    edgeLabelBackground: "#28221e",
+    nodeTextColor: "#f0e8dc",
+    fontSize: "14px"
+  };
+
+  var currentIsDark = document.documentElement.classList.contains("dark");
+
+  var themeBtn = document.querySelector(".theme-toggle");
+  if (themeBtn) {
+    themeBtn.addEventListener("click", function() {
+      var isDark = document.documentElement.classList.contains("dark");
+      document.documentElement.classList.remove(isDark ? "dark" : "light");
+      document.documentElement.classList.add(isDark ? "light" : "dark");
+      localStorage.setItem("theme", isDark ? "light" : "dark");
+      if (window.mermaid) {
+        mermaid.initialize({
+          startOnLoad: false,
+          theme: "base",
+          themeVariables: isDark ? lightMermaidVars : darkMermaidVars
+        });
+        mermaid.run({ querySelector: ".mermaid", suppressErrors: true });
+      }
+    });
+  }
+
   // Mobile Navigation Toggle
   const navToggle = document.querySelector(".nav-toggle");
   const nav = document.querySelector("#primary-nav");
@@ -81,22 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
     mermaid.initialize({
       startOnLoad: false,
       theme: "base",
-      themeVariables: {
-        primaryColor: "#f4ede3",
-        primaryTextColor: "#1f1a17",
-        primaryBorderColor: "#6b5b4f",
-        lineColor: "#6b5b4f",
-        secondaryColor: "#e8dcc8",
-        tertiaryColor: "#efe4d4",
-        mainBkg: "#f4ede3",
-        nodeBorder: "#6b5b4f",
-        clusterBkg: "rgba(255,251,244,0.72)",
-        clusterBorder: "rgba(69,52,39,0.18)",
-        titleColor: "#1f1a17",
-        edgeLabelBackground: "#f4ede3",
-        nodeTextColor: "#1f1a17",
-        fontSize: "14px"
-      }
+      themeVariables: currentIsDark ? darkMermaidVars : lightMermaidVars
     });
 
     mermaid.run({

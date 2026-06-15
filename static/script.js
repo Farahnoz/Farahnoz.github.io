@@ -216,4 +216,104 @@ document.addEventListener("DOMContentLoaded", () => {
         console.warn("Failed to fetch dynamic GitHub stars for Wraft:", err);
       });
   }
+
+  // Table of contents for blog posts
+  const tocContainer = document.querySelector("[data-toc]");
+  if (tocContainer) {
+    const postContent = document.querySelector(".post-content");
+    const tocNav = tocContainer.querySelector("[data-toc-nav]");
+    const headings = postContent
+      ? Array.from(postContent.querySelectorAll("h2"))
+      : [];
+
+    if (headings.length >= 2 && tocNav) {
+      const slugify = (text) =>
+        text
+          .toLowerCase()
+          .trim()
+          .replace(/[^\w\s-]/g, "")
+          .replace(/\s+/g, "-")
+          .replace(/-+/g, "-");
+
+      const usedIds = new Set();
+      headings.forEach((heading) => {
+        if (!heading.id) {
+          let id = slugify(heading.textContent || "section");
+          let unique = id;
+          let n = 2;
+          while (usedIds.has(unique) || document.getElementById(unique)) {
+            unique = `${id}-${n++}`;
+          }
+          heading.id = unique;
+          usedIds.add(unique);
+        } else {
+          usedIds.add(heading.id);
+        }
+      });
+
+      const tocList = document.createElement("ul");
+      tocList.className = "post-toc-list";
+
+      headings.forEach((heading) => {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+        a.href = `#${heading.id}`;
+        a.className = "post-toc-link";
+        a.textContent = heading.textContent;
+        a.dataset.targetId = heading.id;
+        li.appendChild(a);
+        tocList.appendChild(li);
+      });
+
+      tocNav.appendChild(tocList);
+      tocContainer.classList.add("is-ready");
+
+      // Smooth scroll on click (account for sticky header)
+      const stickyHeaderOffset = 90;
+      tocList.addEventListener("click", (e) => {
+        const link = e.target.closest(".post-toc-link");
+        if (!link) return;
+        const target = document.getElementById(link.dataset.targetId);
+        if (!target) return;
+        e.preventDefault();
+        const y = target.getBoundingClientRect().top + window.pageYOffset - stickyHeaderOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
+        history.replaceState(null, "", `#${link.dataset.targetId}`);
+        tocList.querySelectorAll(".post-toc-link").forEach((l) => l.classList.remove("is-active"));
+        link.classList.add("is-active");
+      });
+
+      // Scroll spy using IntersectionObserver
+      const tocLinks = Array.from(tocList.querySelectorAll(".post-toc-link"));
+      const headingById = new Map(headings.map((h) => [h.id, h]));
+
+      const setActive = (id) => {
+        tocLinks.forEach((l) => l.classList.toggle("is-active", l.dataset.targetId === id));
+      };
+
+      if ("IntersectionObserver" in window) {
+        let visible = new Map();
+        const spy = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                visible.set(entry.target.id, entry.target.getBoundingClientRect().top);
+              } else {
+                visible.delete(entry.target.id);
+              }
+            });
+            if (visible.size === 0) return;
+            // Pick the heading closest to the top within the activation band
+            const sorted = Array.from(visible.entries()).sort((a, b) => a[1] - b[1]);
+            const activeId = sorted[0][0];
+            setActive(activeId);
+          },
+          { rootMargin: "-90px 0px -65% 0px", threshold: [0, 1] }
+        );
+        headings.forEach((h) => spy.observe(h));
+      }
+    } else if (tocContainer) {
+      tocContainer.style.display = "none";
+    }
+  }
 });

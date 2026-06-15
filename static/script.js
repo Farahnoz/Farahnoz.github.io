@@ -1,26 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  if (window.mermaid) {
-    mermaid.initialize({
-      startOnLoad: true,
-      theme: "base",
-      themeVariables: {
-        primaryColor: "#f4ede3",
-        primaryTextColor: "#1f1a17",
-        primaryBorderColor: "#6b5b4f",
-        lineColor: "#6b5b4f",
-        secondaryColor: "#e8dcc8",
-        tertiaryColor: "#efe4d4",
-        mainBkg: "#f4ede3",
-        nodeBorder: "#6b5b4f",
-        clusterBkg: "rgba(255,251,244,0.72)",
-        clusterBorder: "rgba(69,52,39,0.18)",
-        titleColor: "#1f1a17",
-        edgeLabelBackground: "#f4ede3",
-        nodeTextColor: "#1f1a17",
-        fontSize: "14px"
-      }
-    });
-  }
   // Mobile Navigation Toggle
   const navToggle = document.querySelector(".nav-toggle");
   const nav = document.querySelector("#primary-nav");
@@ -33,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
       nav.classList.toggle("is-open", !isOpen);
     });
 
-    // Close menu when a link is clicked (mobile navigation)
     nav.querySelectorAll("a").forEach((link) => {
       link.addEventListener("click", () => {
         if (window.innerWidth <= 720) {
@@ -44,7 +21,6 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
 
-    // Reset menu state on window resize
     window.addEventListener("resize", () => {
       if (window.innerWidth > 720) {
         navToggle.setAttribute("aria-expanded", "false");
@@ -62,20 +38,18 @@ document.addEventListener("DOMContentLoaded", () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
-          // Optionally stop observing once revealed
           observer.unobserve(entry.target);
         }
       });
     }, {
-      threshold: 0.1, // Element is 10% visible
-      rootMargin: "0px 0px -50px 0px" // Trigger slightly before it fully appears
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
     });
 
     revealElements.forEach((el) => {
       revealObserver.observe(el);
     });
   } else {
-    // Fallback if IntersectionObserver is not supported
     revealElements.forEach((el) => {
       el.classList.add("visible");
     });
@@ -98,42 +72,101 @@ document.addEventListener("DOMContentLoaded", () => {
         console.warn("Failed to fetch dynamic GitHub stars for Wraft:", err);
       });
   }
+});
 
-  // Mermaid diagram click-to-expand lightbox
-  document.addEventListener("click", (e) => {
-    const mermaidEl = e.target.closest(".mermaid");
-    const overlay = document.querySelector(".mermaid-overlay");
+// Mermaid initialization and expand-to-lightbox
+(function() {
+  function initMermaid() {
+    if (!window.mermaid) return;
+    mermaid.initialize({
+      startOnLoad: false,
+      theme: "base",
+      themeVariables: {
+        primaryColor: "#f4ede3",
+        primaryTextColor: "#1f1a17",
+        primaryBorderColor: "#6b5b4f",
+        lineColor: "#6b5b4f",
+        secondaryColor: "#e8dcc8",
+        tertiaryColor: "#efe4d4",
+        mainBkg: "#f4ede3",
+        nodeBorder: "#6b5b4f",
+        clusterBkg: "rgba(255,251,244,0.72)",
+        clusterBorder: "rgba(69,52,39,0.18)",
+        titleColor: "#1f1a17",
+        edgeLabelBackground: "#f4ede3",
+        nodeTextColor: "#1f1a17",
+        fontSize: "14px"
+      }
+    });
 
-    if (mermaidEl && !overlay) {
+    mermaid.run({
+      querySelector: ".mermaid",
+      suppressErrors: false
+    }).then(function() {
+      setupLightbox();
+    }).catch(function(err) {
+      console.warn("Mermaid render error:", err);
+      setupLightbox();
+    });
+  }
+
+  function setupLightbox() {
+    document.addEventListener("click", function(e) {
+      var overlay = document.querySelector(".mermaid-overlay");
+
+      if (overlay && overlay.classList.contains("is-open")) {
+        overlay.classList.remove("is-open");
+        setTimeout(function() { overlay.remove(); }, 260);
+        return;
+      }
+
+      var mermaidEl = e.target.closest(".mermaid");
+      if (!mermaidEl) return;
+      var svg = mermaidEl.querySelector("svg");
+      if (!svg) return;
+
       e.preventDefault();
-      const svgClone = mermaidEl.querySelector("svg").cloneNode(true);
-      const overlayDiv = document.createElement("div");
-      overlayDiv.className = "mermaid-overlay is-open";
-      const innerDiv = document.createElement("div");
+
+      var svgClone = svg.cloneNode(true);
+      svgClone.removeAttribute("style");
+      svgClone.removeAttribute("height");
+      svgClone.removeAttribute("width");
+      svgClone.style.maxWidth = "94vw";
+      svgClone.style.maxHeight = "90vh";
+      svgClone.style.width = "auto";
+      svgClone.style.height = "auto";
+
+      var overlayDiv = document.createElement("div");
+      overlayDiv.className = "mermaid-overlay";
+      var innerDiv = document.createElement("div");
       innerDiv.className = "mermaid-overlay-inner";
       innerDiv.appendChild(svgClone);
       overlayDiv.appendChild(innerDiv);
-      const hint = document.createElement("span");
+      var hint = document.createElement("span");
       hint.className = "mermaid-close-hint";
-      hint.textContent = "Click anywhere to close";
+      hint.textContent = "Click anywhere or press Esc to close";
       overlayDiv.appendChild(hint);
       document.body.appendChild(overlayDiv);
-      return;
-    }
 
-    if (overlay && overlay.classList.contains("is-open")) {
-      overlay.classList.remove("is-open");
-      setTimeout(() => overlay.remove(), 260);
-    }
-  });
+      requestAnimationFrame(function() {
+        overlayDiv.classList.add("is-open");
+      });
+    });
 
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") {
-      const overlay = document.querySelector(".mermaid-overlay.is-open");
-      if (overlay) {
-        overlay.classList.remove("is-open");
-        setTimeout(() => overlay.remove(), 260);
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Escape") {
+        var overlay = document.querySelector(".mermaid-overlay");
+        if (overlay) {
+          overlay.classList.remove("is-open");
+          setTimeout(function() { overlay.remove(); }, 260);
+        }
       }
-    }
-  });
-});
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initMermaid);
+  } else {
+    initMermaid();
+  }
+})();

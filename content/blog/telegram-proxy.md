@@ -51,4 +51,4 @@ volumes:
   proxy-config:
 ```
 
-The secret is generated once with `head -c 16 /dev/urandom | xxd -ps`. The connection link is `tg://proxy?server=<vps-ip>&port=8448&secret=<secret>`. It has been running for months without a single restart or config change.
+The secret is generated once with `head -c 16 /dev/urandom | xxd -ps`. The connection link is `tg://proxy?server=<vps-ip>&port=8448&secret=<secret>`.

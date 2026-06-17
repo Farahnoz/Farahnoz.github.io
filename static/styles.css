@@ -679,6 +679,15 @@ h2 {
   color: #2a3a4a;
 }
 
+.ai-notice {
+  margin-top: 48px;
+  padding: 12px 16px;
+  font-size: 0.85rem;
+  color: #6b7b8b;
+  border-left: 3px solid #d0d5dd;
+  line-height: 1.5;
+}
+
 .post-content h2 {
   font-size: 1.8rem;
   margin: 40px 0 16px;
@@ -1114,6 +1123,11 @@ html.dark .quote-card {
 
 html.dark .post-content {
   color: #d3c7b6;
+}
+
+html.dark .ai-notice {
+  color: #8b9bab;
+  border-left-color: #4a5568;
 }
 
 html.dark .post-content a {

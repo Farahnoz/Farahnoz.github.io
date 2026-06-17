@@ -71,7 +71,7 @@ I had three requirements that pulled in different directions:
 
 1. **Hardened isolation** — the gateway process should have as little kernel and filesystem access as possible
 2. **Self-modification** — I regularly ask the agent to modify its own code, apply patches, deploy updates via Telegram. This means the agent needs write access to its codebase
-3. **Free LLM models** — the agent uses opencode-zen free-tier models through the same API key
+3. **Free LLM models** — the agent uses free-tier models through the same API key
 
 The tension is obvious: requirement 1 wants a read-only, capability-starved container. Requirement 2 wants write access. Reconciling them is the core architectural decision.
 
@@ -168,7 +168,7 @@ The hermes-agent upstream has no tenant isolation. I added 11 patches across the
 | Memory scope | `agent/agent_init.py` | Passes `chat_id` to `MemoryStore` for per-chat disk storage |
 | User-group perms | `gateway/authz_mixin.py` | Enables per-user-per-group authorization from `config.yaml` |
 | Provider hiding | `gateway/slash_commands.py` | Hides internal providers from `/model` command output |
-| Model switch | `hermes_cli/model_switch.py` | Injects opencode-zen as a free provider |
+| Model switch | `hermes_cli/model_switch.py` | Injects a free model provider |
 | Free Zen models | `hermes_cli/models.py` | Filters to only $0-cost models; replaces curated list |
 | Session scope | `hermes_state.py` | Scopes FTS5 message search by `chat_id` |
 | Mem0 local mode | `plugins/memory/mem0/__init__.py` | Adds Qdrant-based local memory as alternative to cloud Mem0 |
@@ -364,7 +364,7 @@ No service has `SYS_ADMIN`, `NET_ADMIN`, `DAC_OVERRIDE`, or any of the capabilit
 ### What Stayed the Same
 
 - **Management workflow**: I still ask the agent to modify its own code via Telegram. The code volume is writable, so the agent can `git pull`, edit files, and restart services.
-- **Free LLM models**: The opencode-zen API key and model filtering patches work identically.
+- **Free LLM models**: The free-tier API key and model filtering patches work identically.
 - **Data**: All sessions, memories, configs, and cron jobs are preserved via the mounted volumes.
 - **Single-tenant design**: Still one agent per deployment, with per-user authorization inside.
 

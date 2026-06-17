@@ -20,25 +20,24 @@ It's not a theoretical exercise. It's what one real server looked like, what I f
 
 The agent (called Hermes) runs inside an Incus container on a single VPS. The container holds everything:
 
-```
-┌──────────────────────────────────────────┐
-│         Incus Container: hermes-prod     │
-│                                          │
-│  ┌──────┐  ┌─────────┐  ┌──────────┐   │
-│  │ Redis │  │Postgres │  │  Caddy   │   │
-│  │:6379  │  │ :5432   │  │ :80→:8443│   │
-│  └──────┘  └─────────┘  └──────────┘   │
-│                                          │
-│  ┌──────────────────────────────────┐   │
-│  │  Hermes Gateway (Python)         │   │
-│  │  GBrain MCP Server (Bun)         │   │
-│  └──────────────────────────────────┘   │
-│                                          │
-│  Bridge IP: 10.10.10.100                │
-│  Full capabilities, writable rootfs     │
-│  No seccomp, no AppArmor per-process    │
-└──────────────────────────────────────────┘
-```
+<pre class="mermaid">
+flowchart TB
+  subgraph hermes_prod["Incus Container: hermes-prod"]
+    direction TB
+    R[("Redis :6379")]
+    P[("Postgres :5432")]
+    C[("Caddy :80→:8443")]
+    A["Hermes Gateway (Python)<br/>GBrain MCP Server (Bun)"]
+  end
+  
+  subgraph props[" "]
+    IP["Bridge IP: 10.10.10.100"]
+    CAP["Full capabilities, writable rootfs"]
+    SEC["No seccomp, no AppArmor per-process"]
+  end
+
+  hermes_prod --- props
+</pre>
 
 It worked. But the question I asked myself was: **what happens when someone achieves RCE through the agent?**
 
@@ -86,32 +85,32 @@ The threat model then becomes: an attacker who achieves Python RCE in the gatewa
 
 ## The Target Architecture
 
-```
-┌──────────────────────────────────────────┐
-│          Docker Compose Stack            │
-│                                          │
-│  ┌─────────┐  ┌──────────┐              │
-│  │  Redis  │  │ Postgres  │              │
-│  │  :6379  │  │  :5432    │              │
-│  └────┬────┘  └────┬─────┘              │
-│       │   db_net    │                    │
-│       └─────────────┘                    │
-│                     │                    │
-│  ┌──────────────────┴──────────────┐     │
-│  │       Hermes Gateway            │     │
-│  │  read_only: true, cap_drop: ALL │     │
-│  │  seccomp: default, no-new-privs │     │
-│  │  mem_limit: 2G                  │     │
-│  │  volumes: data (rw)             │     │
-│  └──────────────────┬──────────────┘     │
-│                     │  backend_net       │
-│  ┌──────────────────┴──────────────┐     │
-│  │     GBrain (Bun MCP)            │     │
-│  │  read_only: true, cap_drop: ALL │     │
-│  │  mem_limit: 1G                  │     │
-│  └─────────────────────────────────┘     │
-└──────────────────────────────────────────┘
-```
+<pre class="mermaid">
+flowchart TB
+  subgraph docker["Docker Compose Stack"]
+    subgraph db_net["db_net (internal)"]
+      direction LR
+      RD[("Redis :6379")]
+      PG[("Postgres :5432")]
+    end
+
+    subgraph backend_net["backend_net"]
+      direction TB
+      GW["Hermes Gateway
+        read_only: true, cap_drop: ALL
+        seccomp: default, no-new-privs
+        mem_limit: 2G
+        volumes: data (rw)"]
+      GB["GBrain (Bun MCP)
+        read_only: true, cap_drop: ALL
+        mem_limit: 1G"]
+    end
+  end
+
+  RD --- GW
+  PG --- GW
+  GW --- GB
+</pre>
 
 ### Service Breakdown
 

@@ -41,4 +41,4 @@ services:
 
 The container generates keys and configuration for each peer automatically, saved to `./config/peer_<name>/`. For mobile clients it also outputs a QR code PNG. I imported the laptop config as a file and scanned the QR code from my phone.
 
-A full-tunnel setup routes all traffic through the VPS. Latency is about 2ms above baseline. Bandwidth is limited by the VPS link. No logs unless I turn them on.
+A full-tunnel setup routes all traffic through the VPS. The container writes config and keys to `./config/` and nothing else.

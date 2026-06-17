@@ -1,18 +1,20 @@
 +++
-title = "The Telegram Proxy That Wasn't Supposed to Exist"
-description = "How I ended up running an MTProto proxy on my VPS because sometimes the internet just stops working."
+title = "Telegram MTProto Proxy"
+description = "Running an MTProto proxy on a VPS so I can connect when Telegram is blocked."
 date = 2026-06-18
 
 [taxonomies]
 tags = ["telegram", "docker", "proxy", "infrastructure"]
 +++
 
-It started with a disappearing chat. I was on a trip, Telegram was the only way my team reached me, and at some point between one train station and the next, messages just stopped arriving. Not the kind of silence where nobody's talking. The kind where the app spins, then gives you that defeated "connecting..." banner at the top. Telegram was blocked on that network.
+I run a Telegram MTProto proxy on one of my VPSes so I can connect from networks where Telegram is blocked.
 
-I solved it the same way everyone does — found a public MTProto proxy, pasted the link into Telegram, and was back online in ten seconds. But the experience left a bad taste. That proxy could disappear tomorrow. It could be logging everything. It's someone else's server, someone else's uptime, someone else's trust. And once you've used a Telegram proxy, your connection depends on that random person remembering to renew their VPS.
+It's a single Docker container using the official `telegrammessenger/proxy` image, mapped to port 8448 on the host. The setup is a one-liner:
 
-A month later I was setting up a new server for an unrelated project — a WireGuard VPN, actually — and I realized the same box had spare capacity and a static IP. That's the moment the Telegram MTProto proxy was born. Not because I needed it right then. Because I wanted it waiting for the next time I did.
+```bash
+docker run -d -p 8448:443 -e SECRET=<random-hex> telegrammessenger/proxy
+```
 
-The setup was comically simple: a single `docker compose up -d` with the official `telegrammessenger/proxy` image. Generate a 16-byte hex secret from `/dev/urandom`, map port 8448 to the container's 443, and you're done. I shared the connection link with three people I trust, and it's been running ever since, untouched. No config changes, no restarts, no maintenance. It doesn't log. It doesn't know who connects. It just sits there on port 8448, silently proxying bytes for the four people who have the secret.
+The secret is a 16-byte hex string generated with `head -c 16 /dev/urandom | xxd -ps`. Clients authenticate with a `tg://proxy?server=<ip>&port=8448&secret=<secret>` link. I shared mine with a few people who also run into the same blocks.
 
-I don't think about it most days. But every now and then I'm on a train, Telegram spins, I remember the `tg://proxy?server=...` link in my notes, paste it in, and messages start flooding in again.
+No logging, no user tracking, no maintenance. It's been running for months without a single restart.

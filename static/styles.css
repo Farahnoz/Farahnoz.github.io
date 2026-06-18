@@ -966,11 +966,21 @@ h2 {
 .post-content .mermaid svg text {
   font-size: 13px;
   font-family: inherit;
+  fill: #16202c !important;
 }
 
 .post-content .mermaid .label text,
-.post-content .mermaid .node text {
-  fill: #16202c;
+.post-content .mermaid .node text,
+.post-content .mermaid .entityLabel,
+.post-content .mermaid .entityAttribute,
+.post-content .mermaid .er .entityLabel,
+.post-content .mermaid .er .entityAttribute,
+.post-content .mermaid .er .attribute,
+.post-content .mermaid .er .attributeLabel,
+.post-content .mermaid .er .attributeValue,
+.post-content .mermaid .er .attr,
+.post-content .mermaid .er text {
+  fill: #16202c !important;
 }
 
 .mermaid-overlay {
@@ -1195,8 +1205,17 @@ html.dark .post-content .mermaid {
 }
 
 html.dark .post-content .mermaid .label text,
-html.dark .post-content .mermaid .node text {
-  fill: #f0e8dc;
+html.dark .post-content .mermaid .node text,
+html.dark .post-content .mermaid .entityLabel,
+html.dark .post-content .mermaid .entityAttribute,
+html.dark .post-content .mermaid .er .entityLabel,
+html.dark .post-content .mermaid .er .entityAttribute,
+html.dark .post-content .mermaid .er .attribute,
+html.dark .post-content .mermaid .er .attributeLabel,
+html.dark .post-content .mermaid .er .attributeValue,
+html.dark .post-content .mermaid .er .attr,
+html.dark .post-content .mermaid .er text {
+  fill: #f0e8dc !important;
 }
 
 html.dark .post-content .mermaid .node rect,

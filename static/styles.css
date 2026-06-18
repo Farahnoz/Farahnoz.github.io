@@ -1184,8 +1184,37 @@ html.dark .post-content .mermaid {
   box-shadow: 0 14px 34px rgba(0, 0, 0, 0.25);
 }
 
-html.dark .post-content .mermaid svg {
-  filter: invert(0.9) hue-rotate(180deg);
+html.dark .post-content .mermaid .label text,
+html.dark .post-content .mermaid .node text {
+  fill: #e8ddd0 !important;
+}
+
+html.dark .post-content .mermaid .node rect,
+html.dark .post-content .mermaid .node circle,
+html.dark .post-content .mermaid .node polygon {
+  stroke: #7a8a9a !important;
+  fill: #2a2e3a !important;
+}
+
+html.dark .post-content .mermaid .edgePath .path {
+  stroke: #7a8a9a !important;
+  stroke-width: 1.5px;
+}
+
+html.dark .post-content .mermaid .edgeLabel {
+  background-color: #2a2e3a !important;
+  color: #e8ddd0 !important;
+  border: 1px solid #4a5568;
+}
+
+html.dark .post-content .mermaid .cluster-label text {
+  fill: #e8ddd0 !important;
+}
+
+html.dark .post-content .mermaid .cluster rect {
+  fill: #1e2230 !important;
+  stroke: #4a5568 !important;
+  stroke-dasharray: 4 2;
 }
 
 html.dark .post-content .mermaid:hover {

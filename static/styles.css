@@ -963,6 +963,16 @@ h2 {
   font-size: 0.82rem;
 }
 
+.post-content .mermaid svg text {
+  font-size: 13px;
+  font-family: inherit;
+}
+
+.post-content .mermaid .label text,
+.post-content .mermaid .node text {
+  fill: #16202c;
+}
+
 .mermaid-overlay {
   position: fixed;
   inset: 0;
@@ -1186,35 +1196,19 @@ html.dark .post-content .mermaid {
 
 html.dark .post-content .mermaid .label text,
 html.dark .post-content .mermaid .node text {
-  fill: #e8ddd0 !important;
+  fill: #f0e8dc;
 }
 
 html.dark .post-content .mermaid .node rect,
 html.dark .post-content .mermaid .node circle,
 html.dark .post-content .mermaid .node polygon {
-  stroke: #7a8a9a !important;
-  fill: #2a2e3a !important;
-}
-
-html.dark .post-content .mermaid .edgePath .path {
-  stroke: #7a8a9a !important;
-  stroke-width: 1.5px;
+  stroke: #9a8876;
+  fill: #2d2824;
 }
 
 html.dark .post-content .mermaid .edgeLabel {
-  background-color: #2a2e3a !important;
-  color: #e8ddd0 !important;
-  border: 1px solid #4a5568;
-}
-
-html.dark .post-content .mermaid .cluster-label text {
-  fill: #e8ddd0 !important;
-}
-
-html.dark .post-content .mermaid .cluster rect {
-  fill: #1e2230 !important;
-  stroke: #4a5568 !important;
-  stroke-dasharray: 4 2;
+  background-color: #2d2824;
+  color: #f0e8dc;
 }
 
 html.dark .post-content .mermaid:hover {

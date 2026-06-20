@@ -1,5 +1,5 @@
-title = "Vasil Abdul Razak | Backend Engineer"
-base_url = "https://vasil1729.github.io/"
+title = "Farahnoz Melieva | MS in Computer Science · ML Researcher · Software Engineer"
+base_url = "https://farahnoz.github.io/"
 compile_sass = false
 build_search_index = false
 
@@ -8,4 +8,4 @@ taxonomies = [
 ]
 
 [extra]
-author = "Vasil Abdul Razak"
+author = "Farahnoz Melieva"

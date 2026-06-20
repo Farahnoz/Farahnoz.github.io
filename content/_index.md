@@ -1,89 +1,89 @@
 +++
-title = "Vasil Abdul Razak | Backend Engineer & Open-Source Contributor"
+title = "Farahnoz Melieva | MS in Computer Science · ML Researcher · Software Engineer"
 template = "index.html"
 
 [extra]
-subtitle = "Backend Engineer · Open-Source Contributor"
-location = "Kerala, India"
-phone = "+91 88912 85207"
-email = "vazthesoftwareengg@gmail.com"
-github = "vasil1729"
-linkedin = "vasil-abdul-razak"
+subtitle = "MS in Computer Science · ML Researcher · Software Engineer"
+location = "Seoul, South Korea"
+phone = "+82-10-3053-0605"
+email = "farahnoz.m1999@gmail.com"
+github = "Farahnoz"
+linkedin = "farahnoz-melieva-3882951b0"
 
-hero_title = "Scalable automation platforms & real-time systems."
-hero_description = "Vasil Abdul Razak is a Backend Engineer with 5+ years of experience building enterprise-grade automation platforms. As a core contributor and backend owner of Wraft—an open-source document lifecycle automation platform—he specializes in distributed systems, real-time collaboration engines, cryptographic document signing, and background workflow pipelines using Elixir/Phoenix, Go, and Rust."
+hero_title = "Bridging machine learning and software engineering for real-world impact."
+hero_description = "Farahnoz Melieva is an MS in Computer Science graduate from Konkuk University with a focus on machine learning, recommender systems, and graph neural networks. She combines strong research foundations with hands-on software engineering experience across backend, frontend, and QA, with a passion for building intelligent systems and collaborative technology."
 
 metrics = [
-  { val = "5+ Years", label = "building production-ready, scalable platforms" },
-  { val = "120+ Stars", id = "wraft-stars", label = "earned on Wraft open-source repository" },
-  { val = "50K+ Lines", label = "of robust production backend code authored" },
-  { val = "270+ Commits", label = "driving Wraft from MVP to enterprise scale" }
+  { val = "3+ Years", label = "of research & development in ML and software engineering" },
+  { val = "TOPIK 5", label = "Korean Language Proficiency, fully funded by Korean Government Scholarship (GKS)" },
+  { val = "5 Languages", label = "English, Korean, Russian, Tajik, and Persian — working across cultures" },
+  { val = "Published", label = "research on time-aware recommender systems in peer-reviewed journals" }
 ]
 
-about_title = "Architecting backend systems for real-world complexity."
-about_description = "Bridging the gap between low-level performance and user-centric collaboration. Specialized in building concurrency-friendly backends, multi-tenant databases, real-time message sync, and automated compliance pipelines."
-about_background_title = "Scalable architecture from day one."
-about_background_p1 = "Vasil's experience extends from co-founding content-sharing platforms to architecting multi-tenant document workflows. He builds systems that carry enterprise data, handle concurrent inputs under high load, and remain reliable in mission-critical pipelines."
-about_background_p2 = "At Wraft, he led the backend effort from early-stage MVP to a production-ready system capable of hosting 270+ active communities. This operational rigor extends into his freelance consulting work, delivering high-performance accounting and automation modules."
+about_title = "From Central Asia to Seoul — a journey in computer science and AI."
+about_description = "Combining rigorous academic training in machine learning with practical software development experience. Specialized in graph-based recommender systems, deep learning, and building full-stack solutions that bridge research and application."
+about_background_title = "Research-driven, globally-minded."
+about_background_p1 = "Farahnoz earned her MS in Computer Science from Konkuk University in Seoul as a Korean Government Scholarship (GKS) recipient, where she conducted research on hybrid graph-to-sequence architectures for time-aware movie recommendation systems. Her work combines graph neural networks with sequential modeling to improve personalization in dynamic, real-world environments."
+about_background_p2 = "Prior to her graduate studies, she earned her BS in Computer and Information Systems from Tajikistan Technical University, where she contributed to the Tajik-Korean IT Center (WTIT) as a project participant, served as a teaching assistant in algorithms and data structures, and completed internships in web development and software quality assurance."
 
-quote = "Current focus: a book-parsing and translation engine that takes any book and shapes it into a reading experience tailored to the reader — clean typography, structure-aware navigation, and translation into the language they actually read in. LLMs are finally good enough to make this real."
+quote = "Current focus: advancing research in graph representation learning and recommender systems, with an eye toward production ML engineering roles that bridge cutting-edge research with scalable, real-world deployment."
 
 experiences = [
-  { date = "Dec 2025 – Present", company = "Independent Consultant", role = "Freelance Backend Engineer", desc = "Delivering backend engineering solutions for ERP-focused systems and business automation platforms, optimizing workflows for performance and data consistency.", bullets = [
-    "Developing and extending ERPNext/Frappe modules to support complex accounting workflows, reporting systems, and operational automation.",
-    "Building scalable backend services and API integrations using Node.js to connect ERP systems with third-party platforms.",
-    "Providing technical consultation on database schema design, queries, and performance optimization for business-critical applications."
+  { date = "Sept 2020 – Dec 2020", company = "Tajikistan Technical University", role = "Teaching Assistant", location = "Dushanbe, Tajikistan", desc = "Supported undergraduate education in C#-based algorithms and data structures, providing mentoring and academic assistance.", bullets = [
+    "Delivered lecture support and lab sessions for C#-based algorithms and data structures courses.",
+    "Provided one-on-one student mentoring, helping learners understand core programming concepts and data structure design.",
+    "Assisted in preparing course materials, assignments, and evaluation rubrics."
   ] },
-  { date = "Jan 2022 – Nov 2025", company = "Functionary Lab", role = "Founding Engineer / Backend Engineer", location = "Bangalore, India", desc = "Served as the core contributor and backend owner of Wraft, driving the software architecture from inception to enterprise deployment.", bullets = [
-    "Designed foundational backend using Elixir/Phoenix, including role-based access control (RBAC), multi-tenant authorization, and secure data isolation.",
-    "Built real-time collaborative editing engine and form builder backend using Phoenix Channels and WebSockets for conflict-free live synchronization.",
-    "Architected and shipped a scalable multi-organization onboarding structure supporting 270+ active communities.",
-    "Developed extensible workflow pipelines using Oban to orchestrate document approvals and complex state transitions.",
-    "Implemented secure document signing and PDF processing pipelines using Elixir NIFs (Native Implemented Functions), Rust, and Java."
+  { date = "Oct 2019 – Jun 2021", company = "Tajik-Korean IT Center (WTIT)", role = "Project Participant", location = "Dushanbe, Tajikistan", desc = "Participated in an IT education program in collaboration with Korean institutions, supporting workshops, educational activities, and cross-institutional knowledge exchange.", bullets = [
+    "Supported the delivery of IT workshops and training sessions as part of a Tajik-Korean institutional collaboration.",
+    "Assisted with training schedule management and preparation of learning materials for participants.",
+    "Facilitated IT knowledge exchange activities between Tajik and Korean partner institutions."
   ] },
-  { date = "2019 – 2020", company = "Knocus Solutions PVT LTD", role = "Founding Engineer / Backend Engineer", location = "Hyderabad, India", desc = "Co-founded and drove product development for a collaborative online platform designed for creating and sharing stories, poems, and articles.", bullets = [
-    "Designed and built high-performance, real-time communication systems using Go (Golang) and WebSockets.",
-    "Developed robust REST APIs and managed PostgreSQL databases for dynamic content retrieval and user management."
+  { date = "Jul 2019 – Aug 2019", company = "ProDvD", role = "Software QA Intern", location = "Tashkent, Uzbekistan", desc = "Contributed to quality assurance for medical software products, ensuring reliability through systematic testing and defect verification.", bullets = [
+    "Designed and documented test cases for medical software modules, supporting systematic defect detection.",
+    "Conducted manual testing including performance, regression, and functional testing to improve product quality.",
+    "Collaborated with the development team on defect verification, bug reporting, and correction validation."
+  ] },
+  { date = "Jun 2018 – Aug 2018", company = "Tajikistan Technical University", role = "Web Development Intern", location = "Dushanbe, Tajikistan", desc = "Built full-stack web applications as part of a collaborative internship project, working across frontend and backend development.", bullets = [
+    "Developed full-stack web applications using JavaScript, PHP, and MySQL in a team environment.",
+    "Collaborated on frontend UI implementation and backend API design within an agile-style project workflow.",
+    "Gained hands-on experience with the complete web development lifecycle from requirements to deployment."
   ] }
 ]
 
 projects = [
-  { title = "Wraft DLM Platform", category = "Document Lifecycle Management", desc = "An open-source document lifecycle automation system that treats documents like code—structured, version-controlled, and highly collaborative. Showcased at IndiaFOSS 2025.", stack = ["Elixir", "Phoenix", "Rust", "PostgreSQL", "Typesense", "Oban", "Pandoc", "Typst", "MinIO"], bullets = [
-    "Real-time collaborative editing using Phoenix Channels/WebSockets for conflict-free multi-user authoring.",
-    "Extensible workflow engine built on top of Oban pipelines with granular state management.",
-    "Cryptographic document signing and PDF processing utilizing high-performance Elixir NIFs and Rust."
-  ], github = "https://github.com/wraft/wraft" },
-  { title = "Accounting Collaboration Platform", category = "Multi-tenant ERPNext Integration", desc = "A platform that lets accounting firms collaborate with their clients on top of ERPNext—unifying task management, document exchange, and real-time notifications across multiple client instances behind a single interface.", stack = ["Node.js", "TypeScript", "Python", "Express", "PostgreSQL", "Prisma", "Redis", "Firebase FCM", "AWS S3", "Vitest"], bullets = [
-    "Multi-tenant model where a single user can work across many client/company ERPNext instances through scoped access grants.",
-    "Proxies live accounting data (invoices, journal entries, ledgers) from each client's ERPNext while owning task and comment workflows internally.",
-    "Task-based workflow with comments, status transitions, audit trails, and cross-platform push notifications."
+  { title = "Time-Aware Movie Recommendation System", category = "Machine Learning Research", desc = "A hybrid graph-to-sequence architecture for time-aware movie recommendation, combining graph neural networks with sequential models. Under review at Applied Intelligence (2025).", stack = ["Python", "TensorFlow", "Graph Neural Networks", "RNN", "LSTM", "BiLSTM", "Collaborative Filtering", "Feature Engineering"], bullets = [
+    "Designed a hybrid architecture combining graph representation learning with sequential temporal modeling for improved personalization.",
+    "Incorporated user–item interaction graphs with temporal dynamics using RNN, LSTM, and BiLSTM models.",
+    "Evaluated clustering quality using Silhouette and Elbow methods, with hyperparameter tuning for optimal performance."
   ] },
-  { title = "LocalTube Audio", category = "Android · Rust + Dioxus", desc = "A local-first Android app that turns any YouTube URL into a 320 kbps MP3 with embedded album art. No backend, no ads, no tracking—everything runs on device.", stack = ["Rust", "Dioxus", "JNI", "NewPipe Extractor", "FFmpegKit", "Kotlin", "Gradle 9", "Material You"], bullets = [
-    "Rust UI compiled with Dioxus and cross-compiled to aarch64-linux-android, packaged into a single APK.",
-    "Calls into NewPipe Extractor (Java) and FFmpegKit (native) over JNI via the `jni` crate, with Kotlin injection bridging the Android lifecycle.",
-    "Persistent download queue with animated progress and a dark Material You UI."
+  { title = "Full-Stack Web Application", category = "Web Development", desc = "A collaborative full-stack web development project built during an internship at Tajikistan Technical University, spanning both frontend and backend implementation.", stack = ["JavaScript", "PHP", "MySQL", "HTML", "CSS", "Bootstrap"], bullets = [
+    "Built interactive frontend interfaces with JavaScript, HTML, CSS, and Bootstrap for a responsive user experience.",
+    "Developed backend logic and RESTful APIs using PHP and MySQL for dynamic data management.",
+    "Collaborated in a team environment to deliver end-to-end functionality from design to deployment."
   ] },
-  { title = "EPUB Reader", category = "Android · Flutter", desc = "A production-grade EPUB 2/3 reader with a full library, dual reading modes, and fully offline translation across 57 languages including Persian, Urdu, Arabic, and Hindi.", stack = ["Flutter", "Dart", "Google ML Kit", "CSS Columns", "SQLite"], bullets = [
-    "Library with auto-scan, grid/list views, cover thumbnails, sorting, and per-chapter persistent reading position.",
-    "Reader supports continuous-scroll and CSS-column paged modes, 13 themes (Solarized, Gruvbox, Dracula, Tokyo Night…), and full font/size/family controls.",
-    "On-device ML Kit translation with RTL rendering, per-chapter translation cache, and an original ↔ translated toggle.",
-    "Selection action bar with Copy and a conditional “Ask ChatGPT” action that appears only when the ChatGPT app is installed."
+  { title = "Medical Software Quality Assurance", category = "Software Testing & QA", desc = "Quality assurance and testing engagement for medical software at ProDvD, focusing on systematic testing, defect reporting, and cross-team collaboration to ensure product reliability.", stack = ["Test Case Design", "Regression Testing", "Performance Testing", "Defect Tracking", "Manual Testing"], bullets = [
+    "Designed structured test cases and executed manual testing cycles across multiple software modules.",
+    "Performed regression and performance testing to identify degradation and ensure consistent product quality.",
+    "Tracked and verified defects in collaboration with the development team through the full correction lifecycle."
   ] },
-  { title = "Book Parsing & Translation Engine", category = "In Progress · Reading Experience", desc = "A pipeline that ingests a book in any format, parses its structure, and renders it as a tailored reading experience — clean typography, structure-aware navigation, and LLM translation into the reader's language. UI direction inspired by a Google Stitch prototype; the EPUB Reader above is the first shipped slice.", stack = ["Elixir", "Rust", "React", "Next.js", "TypeScript"], bullets = [
-    "Structure-aware parsing of chapters, footnotes, and headings into a clean reading model independent of the source format.",
-    "Reader-first presentation: typography, spacing, themes, and navigation tuned for long-form reading rather than raw file rendering.",
-    "Per-book translation pipeline mixing on-device models and LLMs, with original ↔ translated toggling at any granularity."
-  ], design_link = "https://stitch.withgoogle.com/projects/1888920995036630329" }
+  { title = "Tajik-Korean IT Knowledge Exchange", category = "International Collaboration · IT Education", desc = "Participated in a multi-year IT education and knowledge exchange program between Tajikistan and Korean institutions, supporting workshops, training operations, and cross-cultural technical collaboration.", stack = ["Workshop Facilitation", "Educational Content Development", "Cross-Institutional Coordination", "Technical Training"], bullets = [
+    "Supported IT workshop delivery and hands-on training sessions for diverse participant groups.",
+    "Coordinated training schedules and prepared educational materials for classroom and lab environments.",
+    "Facilitated technical knowledge sharing between Tajik and Korean partner institutions."
+  ] }
 ]
 
 recognition = [
-  { title = "Wraft Featured at IndiaFOSS 2025", desc = "Showcased as an emerging open-source document automation platform at India’s premier FOSS conference, demonstrating community adoption." },
-  { title = "B.Tech in Electronics & Communication", desc = "Indian Institute of Information Technology, Sri City (2014 – 2018)." }
+  { title = "Korean Government Scholarship (GKS)", desc = "Fully funded MS in Computer Science at Konkuk University, Seoul, South Korea — awarded to top international candidates." },
+  { title = "TOPIK — Korean Language Proficiency", desc = "Achieved TOPIK Level 5 (2022) and Level 4 (2024), demonstrating advanced Korean language proficiency." },
+  { title = "BS with Honors — Computer and Information Systems", desc = "Tajikistan Technical University (2017 – 2021). Graduated with distinction." }
 ]
 
 skills = [
-  { category = "Languages", tags = ["Elixir", "Go (Golang)", "Rust", "Python", "Java", "C/C++", "JavaScript"] },
-  { category = "Backend & Databases", tags = ["Phoenix", "Ecto", "Oban", "Node.js", "PostgreSQL", "Redis", "Valkey"] },
-  { category = "DevOps & Tools", tags = ["Kubernetes", "Docker", "GitHub Actions", "GitLab CI/CD", "WebSockets", "Pandoc", "LaTeX"] }
+  { category = "Programming Languages", tags = ["Python", "C#", "Java", "PHP", "SQL", "PowerShell", "Bash"] },
+  { category = "ML & AI", tags = ["TensorFlow", "Scikit-learn", "NumPy", "Pandas", "Matplotlib", "Seaborn", "GNNs", "Recommender Systems", "Deep Learning", "Data Science"] },
+  { category = "Backend & Web", tags = ["ASP.NET Core", "Node.js", "SQL Server", "SQLite", "Entity Framework", "HTML", "CSS", "JavaScript", "Bootstrap"] },
+  { category = "Tools & DevOps", tags = ["Git", "GitHub", "Docker", "VS Code", "Visual Studio", "Jupyter", "Google Colab", "Linux"] }
 ]
 +++

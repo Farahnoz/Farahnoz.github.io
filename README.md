@@ -1,8 +1,8 @@
-# Vasil Abdul Razak — Personal Portfolio
+# Farahnoz Melieva — Personal Portfolio
 
 A premium, highly-optimized, and responsive personal portfolio website built using the **Zola** static site generator and **Tera** templates. 
 
-Live URL: **[https://vasil1729.github.io/](https://vasil1729.github.io/)**
+Live URL: **[https://farahnoz.github.io/](https://farahnoz.github.io/)**
 
 ## 🎨 Theme Branches
 

@@ -1,4 +1,4 @@
-# Walkthrough - Personal Portfolio for Vasil Abdul Razak (Zola Edition)
+# Walkthrough - Personal Portfolio for Farahnoz Melieva (Zola Edition)
 
 The personal portfolio has been fully restructured and migrated to **Zola** inside `/home/ultimatum/frontend_labs/frontend_practice/personal_portfolio/`. All content variables are now fully decoupled from presentation layouts.
 
@@ -24,7 +24,7 @@ The personal portfolio has been fully restructured and migrated to **Zola** insi
   - Stylesheet: [static/styles.css](file:///home/ultimatum/frontend_labs/frontend_practice/personal_portfolio/static/styles.css)
   - JS Script: [static/script.js](file:///home/ultimatum/frontend_labs/frontend_practice/personal_portfolio/static/script.js)
   - Profile Image: [static/imgs/avatar.png](file:///home/ultimatum/frontend_labs/frontend_practice/personal_portfolio/static/imgs/avatar.png)
-  - Resume: [static/Vasil_resume_v3.pdf](file:///home/ultimatum/frontend_labs/frontend_practice/personal_portfolio/static/Vasil_resume_v3.pdf)
+  - Resume: [static/Resume (1).pdf](file:///home/ultimatum/frontend_labs/frontend_practice/personal_portfolio/static/Resume (1).pdf)
 
 ---
 

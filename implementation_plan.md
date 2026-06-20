@@ -1,4 +1,4 @@
-# Implementation Plan - Personal Portfolio for Vasil Abdul Razak (Zola Migration)
+# Implementation Plan - Personal Portfolio for Farahnoz Melieva (Zola Migration)
 
 Migrate the personal portfolio website to use **Zola**, a fast, single-binary static site generator. This allows all content to be managed modularly via Markdown and front matter (TOML), rendering the pages dynamically using Tera templates.
 
@@ -23,7 +23,7 @@ We will restructure the repository `/home/ultimatum/frontend_labs/frontend_pract
 └── static/
     ├── styles.css         (Vanilla CSS styles)
     ├── script.js          (Interactive Javascript)
-    ├── Vasil_resume_v3.pdf (Resume download target)
+    ├── Resume (1).pdf (Resume download target)
     └── imgs/
         └── avatar.png     (Profile avatar)
 ```
@@ -51,7 +51,7 @@ We will restructure the repository `/home/ultimatum/frontend_labs/frontend_pract
 #### [MODIFY] [script.js](file:///home/ultimatum/frontend_labs/frontend_practice/personal_portfolio/static/script.js) (moved to `static/`)
 - Relocated interaction script for menu and reveals.
 
-#### [MODIFY] [Vasil_resume_v3.pdf](file:///home/ultimatum/frontend_labs/frontend_practice/personal_portfolio/static/Vasil_resume_v3.pdf) (moved to `static/`)
+#### [MODIFY] [Resume (1).pdf](file:///home/ultimatum/frontend_labs/frontend_practice/personal_portfolio/static/Resume (1).pdf) (moved to `static/`)
 - Relocated resume file.
 
 ---
